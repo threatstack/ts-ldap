@@ -28,6 +28,7 @@ chef_gem 'net-ldap' do
 end
 
 # ldap_pws should point to a databag with LDAP passwords
+# ldaphosts should be an array of your LDAP hosts in role:ldap
 syncreplrid = Hash[search(:node, 'role:ldap', :filter_result => { :name => ['name'], 'id' => ['openldap', 'serverid'] }).map { |k| [k['name'], k['id']] }]
 
 ldaphosts.each do |e|

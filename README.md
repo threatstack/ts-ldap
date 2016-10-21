@@ -2,7 +2,8 @@
 Some bits we used to help us deploy OpenLDAP.
 
 Please see each respective file for its license and copyright information.
-Content developed by Threat Stack, Inc. is under the MIT license.
+Content developed by Threat Stack, Inc. in this repository is under the MIT
+license.
 
 Files include:
   * 001-zmldapenable-mmr.pl [GPL] - a script that has helpful information on

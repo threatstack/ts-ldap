@@ -2,8 +2,8 @@
 # Cookbook Name::
 # Resource:: syncrepl
 #
-# Copyright (c) 2016 Threat Stack, Inc.
-# Author:: Patrick T. Cable II <pat.cable@threatstack.com>
+# Copyright (c) 2016-2022 F5, Inc.
+# Author:: Patrick Cable <p.cable@f5.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal

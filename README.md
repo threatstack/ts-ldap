@@ -6,9 +6,7 @@ Content developed by Threat Stack, Inc. in this repository is under the MIT
 license.
 
 Files include:
-  * 001-zmldapenable-mmr.pl [GPL] - a script that has helpful information on
-    OpenLDAP attributes used in configuring multi-master replication. This is an
-    unmodified version of the script from Zimbra's binary distribution.
+  * 001-zmldapenable-mmr.pl (No longer in this repo, view in the [zm-core-utils](https://github.com/Zimbra/zm-core-utils/blob/8.8.12/src/libexec/zmldapenable-mmr) repository)
   * 002-syncrepl.rb [MIT] - The Syncrepl resource we made for updating syncrepl
     information using Chef.
   * 003-helpers.rb [MIT] - Helpers used in communicating with LDAP.
@@ -85,3 +83,6 @@ if ldaphosts.count > 1
   end
 end
 ```
+
+# Contributing
+We do not accept contributions for this repository.

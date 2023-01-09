@@ -42,22 +42,29 @@ def init_ldap(hostname, basedn, admindn, adminpw)
                         }
   return ldap
 end
-
-def get_entry(ldap, syncprovider)
+def get_entry(ldap, syncprovider) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   filter = Net::LDAP::Filter.eq('olcSyncrepl', '*')
   search = ldap.search(:filter => filter, :attributes => ['olcSyncrepl']).map { |k| k[:olcSyncrepl] }.flatten
-  return false unless search.count >= 1
-  search.each do |s|
-    entry = s.split(/\s(?=(?:[^"]|"[^"]*")*$)/).map { |k|
-      m = k.to_s.split('=',2);
+
+  # scan all of the returned records for the "correct" one.
+  # if none of them match, we'll just return false at the end of the function.
+  correct_syncprovider_idx = nil
+  search.each_with_index do |val, idx|
+    if val.include?(syncprovider)
+      correct_syncprovider_idx = idx
+    end
+  end
+
+  unless correct_syncprovider_idx.nil?
+    entry = search[correct_syncprovider_idx].split(/\s(?=(?:[^"]|"[^"]*")*$)/).map do |k|
+      m = k.to_s.split('=', 2)
       m[0] = 'rid' if m[0].include?('rid')
       m[0] = m[0].to_sym
       m
-    }.to_h
-    return entry if entry[:provider].include?(syncprovider)
-    next
+    end.to_h
+    return entry
   end
-  return false
+  false
 end
 
 def get_syncrepls(ldap)
